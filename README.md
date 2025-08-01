@@ -62,20 +62,20 @@ A full-stack web application for vehicle rentals, built with the MERN stack (Mon
 
 
 
-<img src="https://github.com/user-attachments/assets/34d82435-7294-457b-8aea-1bf8a5dd67a7" alt="Login Page" width="50%" />
+<img src="https://github.com/user-attachments/assets/34d82435-7294-457b-8aea-1bf8a5dd67a7" alt="Login Page" width="75%" />
 
-<img src="https://github.com/user-attachments/assets/640ddda3-7454-4097-be4c-1010163ee2a6" alt="Dashboard Overview" width="50%" />
+<img src="https://github.com/user-attachments/assets/640ddda3-7454-4097-be4c-1010163ee2a6" alt="Dashboard Overview" width="75%" />
 
 
 
-<img src="https://github.com/user-attachments/assets/8c42e3d6-5552-40a5-8629-b10783494d9d" alt="Admin Dashboard" width="100%" />
-<img src="https://github.com/user-attachments/assets/8270e2d4-72cb-4df1-b21d-9659568d6b34" alt="Owner Panel" width="100%" />
+<img src="https://github.com/user-attachments/assets/8c42e3d6-5552-40a5-8629-b10783494d9d" alt="Admin Dashboard" width="75%" />
+<img src="https://github.com/user-attachments/assets/8270e2d4-72cb-4df1-b21d-9659568d6b34" alt="Owner Panel" width="75%" />
 Admin-panel:
-<img src="https://github.com/user-attachments/assets/c2dcc7e9-b714-4b04-817a-3b41c0474953" alt="Bookings Page" width="100%" />
-<img src="https://github.com/user-attachments/assets/16467497-62d6-4853-b9b2-e811105c0d4d" alt="Vehicle Detail View" width="100%" />
-Owner dashboard:
-<img src="https://github.com/user-attachments/assets/60f40d43-70ce-4ede-a539-924f4c5e5b92" alt="Chatbot UI" width="100%" />
-<img src="https://github.com/user-attachments/assets/55130244-56b8-4f17-9262-45234b293c8f" alt="Dark Mode Support" width="100%" />
+<img src="https://github.com/user-attachments/assets/c2dcc7e9-b714-4b04-817a-3b41c0474953" alt="Bookings Page" width="75%" />
+<img src="https://github.com/user-attachments/assets/16467497-62d6-4853-b9b2-e811105c0d4d" alt="Vehicle Detail View" width="75%" />
+<img src="https://github.com/user-attachments/assets/60f40d43-70ce-4ede-a539-924f4c5e5b92" alt="Chatbot UI" width="75%" />
+Owner-dashboard:
+<img src="https://github.com/user-attachments/assets/55130244-56b8-4f17-9262-45234b293c8f" alt="Dark Mode Support" width="75%" />
 
 ---
 
