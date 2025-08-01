@@ -1,0 +1,20 @@
+# .gitignore
+node_modules/
+.env
+.env.*     # covers .env.local etc.
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+dist/
+build/
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
+*.copy/
+.vscode/
+.idea/
+coverage/
+.history/
