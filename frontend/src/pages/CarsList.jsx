@@ -2,16 +2,18 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
-const Cars = () => {
-  const { type } = useParams(); // dynamic param like 'SUV', 'Van'
-  const [filterCars, setFilterCars] = useState([]); //this helps to filter the vehicles based on type
-  const [showFilter, setShowFilter] = useState(false); //colour change on filter toggle
+const CarsList = () => {
+  const { category } = useParams();
+  const [filterCars, setFilterCars] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
   const navigate = useNavigate();
   const { vehicles } = useContext(AppContext);
 
   const applyFilter = () => {
-    if (type) {
-      setFilterCars(vehicles.filter(car => car.type === type));
+    if (category) {
+      setFilterCars(vehicles.filter(car =>
+        car.category.toLowerCase() === category.toLowerCase()
+      ));
     } else {
       setFilterCars(vehicles);
     }
@@ -19,16 +21,17 @@ const Cars = () => {
 
   useEffect(() => {
     applyFilter();
-  }, [vehicles, type]);
+  }, [vehicles, category]);
 
   return (
-    <div className='md:mx-10'>
-      <p className='text-gray-600'>Browse vehicles by category</p>
+    <div className='md:mx-10 mb-10'>
+      <p className='text-desc-dark'>Browse vehicles by category</p>
 
       <div className='flex flex-col sm:flex-row items-start gap-4 mt-5'>
-        {/* Filter toggle for mobile */}
+        {/* Mobile filter toggle */}
         <button
-          className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-[#43B17E] text-white' : ''}`}
+          className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-[#43B17E] text-white' : ''
+            }`}
           onClick={() => setShowFilter(prev => !prev)}
         >
           Filters
@@ -39,8 +42,9 @@ const Cars = () => {
           {['Car', 'SUV', 'Van', 'Truck', 'Bike'].map((t, idx) => (
             <p
               key={idx}
-              onClick={() => (type === t ? navigate('/cars') : navigate(`/cars/${t}`))}
-              className={`pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${type === t ? 'bg-[#43B17E] text-white' : ''}`}
+              onClick={() => (category?.toLowerCase() === t.toLowerCase() ? navigate('/cars') : navigate(`/cars/${t}`))}
+              className={`pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${category?.toLowerCase() === t.toLowerCase() ? 'bg-[#E53935] text-white' : ''
+                }`}
             >
               {t}
             </p>
@@ -53,18 +57,49 @@ const Cars = () => {
             <div
               onClick={() => navigate(`/book-car/${item._id}`)}
               key={index}
-              className='border border-green-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500 bg-white shadow-sm'
+              className='border border-[#FFDAD8] rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-8px] transition-all duration-500 bg-white shadow-sm hover:shadow-md'
             >
-              <img className='w-full h-40 object-cover bg-gray-50' src={item.image} alt={item.name} />
+              <img
+                className='bg-[#FFF1F0] w-full h-[160px] object-cover'
+                src={item.image}
+                alt={item.name}
+              />
               <div className='p-4'>
-                <p className='text-lg font-semibold'>{item.name}</p>
-                <p className='text-sm text-gray-600'>{item.category}</p>
-                <div className='flex items-center text-yellow-500 text-sm mt-1'>
-                  {'★'.repeat(Math.floor(item.stars || 4))}
-                  {'☆'.repeat(5 - Math.floor(item.stars || 4))}
-                  <span className='ml-1 text-gray-500'>({item.stars || '4'})</span>
+                {/* Availability Badge - Made more compact */}
+                <div className={`flex items-center gap-1.5 text-xs ${item.available ? 'text-[#E53935]' : 'text-gray-500'}`}>
+                  <div className={`w-2 h-2 ${item.available ? 'bg-[#E53935]' : 'bg-gray-400'} rounded-full`}></div>
+                  <span>{item.available ? 'Available' : 'Unavailable'}</span>
                 </div>
-                <p className='text-sm text-gray-700 mt-1'>₹{item. pricePerDay} / day</p>
+
+                {/* Vehicle Name - Slightly tighter spacing */}
+                <p className='text-black text-lg font-semibold mt-2'>{item.name}</p>
+
+                {/* Category Tag - Enhanced visibility */}
+                <div className='mt-2 flex flex-wrap gap-1.5'>
+                  <span className='text-xs bg-[#FFE5E3] text-[#E53935] px-2 py-1 rounded-full'>
+                    {item?.category?.toUpperCase() || 'DEFAULT'}
+                  </span>
+                  {/* Optional: Add transmission type if available */}
+                  {item.type && (
+                    <span className='text-xs bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full'>
+                      {item.type}
+                    </span>
+                  )}
+                </div>
+
+                {/* Rating - Better alignment */}
+                <div className='flex items-baseline mt-2'>
+                  <div className='flex text-yellow-500 text-sm'>
+                    {'★'.repeat(Math.floor(item.rating || 4))}
+                    {'☆'.repeat(5 - Math.floor(item.rating || 4))}
+                  </div>
+                  <span className='ml-1.5 text-gray-500 text-xs'>({item.rating || '4'})</span>
+                </div>
+
+                {/* Price - More emphasis */}
+                <p className='text-gray-900 font-medium mt-2 text-sm'>
+                  ₹{item.pricePerDay?.toLocaleString() || 'DEFAULT'} <span className='text-gray-500 font-normal'>/ day</span>
+                </p>
               </div>
             </div>
           ))}
@@ -74,4 +109,4 @@ const Cars = () => {
   );
 };
 
-export default Cars;
+export default CarsList;

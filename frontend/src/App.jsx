@@ -15,6 +15,7 @@ import MyBookings from './pages/MyBookings'; // ✅ FIXED
 import Profile from './pages/Profile';
 
 
+
 const App = () => {
   return (
     <>
@@ -24,7 +25,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path="/cars" element={<CarsList />} />
-          <Route path="/cars/:type" element={<CarsList />} />
+          <Route path="/cars/:category" element={<CarsList />} />
           <Route path="/login" element={<Login />} />
           <Route path='/about' element={<About />} />  
           <Route path='/contact' element={<Contact />} />  

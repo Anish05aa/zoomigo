@@ -3,38 +3,81 @@ import { assets } from '../assets/assets';
 
 const About = () => {
   return (
-    <div>
-      <div className='text-center text-2xl pt-10 text-gray-500'>
-        <p>ABOUT <span className='text-gray-700 font-medium'>US</span></p>
+    <div className="bg-white text-gray-700 max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      {/* Heading */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-[#E53935]">
+          ABOUT <span className="text-gray-900">ZOOMIGO</span>
+        </h1>
+        <div className="w-20 h-1 bg-[#E53935] mx-auto mt-4"></div>
       </div>
 
-      <div className='my-10 flex flex-col md:flex-row gap-12'>
-        <img className='w-full md:max-w-[360px]' src={assets.about_image} alt="" />
-        <div className='flex flex-col justify-center gap-6 md:w-2/4 text-sm text-gray-600'>
-          <p>Welcome to DriveEase, your trusted partner for reliable and affordable car rentals. At DriveEase, we understand the importance of flexibility, comfort, and convenience when it comes to your travel needs.</p>
-          <p>DriveEase is committed to providing a seamless vehicle rental experience. Whether you're planning a weekend getaway, a business trip, or need a ride for daily errands, we are here with a range of vehicles and flexible rental plans to support your journey.</p>
-          <b className='text-gray-800'>Our Vision</b>
-          <p>Our vision at DriveEase is to become your go-to car rental platform — delivering exceptional service, an easy-to-use system, and a diverse fleet of vehicles that cater to every lifestyle and budget.</p>
+      {/* Image + Description - Reversed layout for better visual flow */}
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-16">
+        {/* Image container with improved styling */}
+        <div className="w-full lg:w-1/2 relative rounded-xl overflow-hidden shadow-lg">
+          <img
+            className="w-full h-auto object-cover min-h-[300px]"
+            src={assets.pointing_man} 
+            alt="Zoomigo Rental Service"
+          />
+          {/* Optional overlay for better text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#E53935]/10 to-transparent"></div>
+        </div>
+
+        {/* Text content */}
+        <div className="w-full lg:w-1/2 space-y-6">
+          <p className="text-lg leading-relaxed">
+            Welcome to <span className="font-bold text-[#E53935]">Zoomigo</span>, your premier choice for reliable and affordable car rentals. We're committed to providing exceptional service that puts you in control of your journey.
+          </p>
+          <p className="text-lg leading-relaxed">
+            Whether you need a vehicle for business travel, family vacations, or daily commuting, Zoomigo delivers a seamless rental experience with our modern fleet, transparent pricing, and 24/7 customer support.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 mt-8">Our Vision</h2>
+          <p className="text-lg leading-relaxed">
+            To revolutionize car rentals through innovative technology, exceptional service, and a customer-first approach that makes every journey memorable.
+          </p>
         </div>
       </div>
 
-      <div className='text-xl my-4'>
-        <p>WHY <span className='text-gray-700 font-semibold'>CHOOSE US</span></p>
+      {/* Why Choose Us */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold text-gray-900">
+          WHY CHOOSE <span className="text-[#E53935]">ZOOMIGO</span>
+        </h2>
+        <div className="w-20 h-1 bg-[#E53935] mx-auto mt-4"></div>
       </div>
 
-      <div className='flex flex-col md:flex-row mb-20 md:gap-2 lg:gap-4'>
-        <div className='border border-gray-400 rounded-2xl px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-[#43B17E] hover:text-white transition-all duration-300 text-gray-600 cursor-pointer hover:scale-110'>
-          <b>Flexibility</b>
-          <p>Wide range of rental durations and vehicle options to suit your needs.</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#FFDAD8]">
+          <div className="text-[#E53935] text-4xl mb-4">🚗</div>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Flexible Options</h3>
+          <p className="text-gray-600">
+            Choose from our diverse fleet of vehicles with flexible rental periods to match your schedule perfectly.
+          </p>
         </div>
-        <div className='border border-gray-400 rounded-2xl px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-[#43B17E] hover:text-white transition-all duration-300 text-gray-600 cursor-pointer hover:scale-110'>
-          <b>Affordability</b>
-          <p>Competitive pricing with no hidden charges — value you can count on.</p>
+        <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#FFDAD8]">
+          <div className="text-[#E53935] text-4xl mb-4">💰</div>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Best Value</h3>
+          <p className="text-gray-600">
+            Competitive pricing with no hidden fees - just honest, transparent rates for quality vehicles.
+          </p>
         </div>
-        <div className='border border-gray-400 rounded-2xl px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-[#43B17E] hover:text-white transition-all duration-300 text-gray-600 cursor-pointer hover:scale-110'>
-          <b>Convenience</b>
-          <p>Easy online booking, real-time availability, and a responsive support team.</p>
+        <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#FFDAD8]">
+          <div className="text-[#E53935] text-4xl mb-4">📱</div>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Easy Booking</h3>
+          <p className="text-gray-600">
+            Our intuitive platform lets you reserve your perfect vehicle in just a few taps.
+          </p>
         </div>
+      </div>
+
+      {/* Additional Section */}
+      <div className="bg-[#FFF1F0] p-8 rounded-xl">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Our Commitment</h2>
+        <p className="text-center text-lg max-w-3xl mx-auto">
+          At Zoomigo, we're dedicated to providing safe, clean, and well-maintained vehicles with exceptional customer service at every step of your rental experience.
+        </p>
       </div>
     </div>
   );

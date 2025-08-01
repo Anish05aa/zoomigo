@@ -20,7 +20,7 @@ const Sidebar = () => {
             to={'/admin/dashboard'}
             className={({ isActive }) =>
               `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${
-                isActive ? 'bg-[#F2F3FF] border-r-4 border-[#43B17E]' : ''
+                isActive ? 'bg-[#F2F3FF] border-r-4 border-[#ff6f61]' : ''
               }`
             }
           >
@@ -32,11 +32,11 @@ const Sidebar = () => {
             to={'/admin/all-bookings'}
             className={({ isActive }) =>
               `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${
-                isActive ? 'bg-[#F2F3FF] border-r-4 border-[#43B17E]' : ''
+                isActive ? 'bg-[#F2F3FF] border-r-4 border-[#ff6f61]' : ''
               }`
             }
           >
-            <img src={assets.appointment_icon} alt="Bookings" />
+            <img src={assets.booking_icon} alt="Bookings" />
             <p className='hidden md:block'>Bookings</p>
           </NavLink>
 
@@ -44,7 +44,7 @@ const Sidebar = () => {
             to={'/admin/add-vehicle'}
             className={({ isActive }) =>
               `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${
-                isActive ? 'bg-[#F2F3FF] border-r-4 border-[#43B17E]' : ''
+                isActive ? 'bg-[#F2F3FF] border-r-4 border-[#ff6f61]' : ''
               }`
             }
           >
@@ -58,12 +58,12 @@ const Sidebar = () => {
             to={'/admin/all-vehicles'}
             className={({ isActive }) =>
               `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${
-                isActive ? 'bg-[#F2F3FF] border-r-4 border-[#43B17E]' : ''
+                isActive ? 'bg-[#F2F3FF] border-r-4 border-[#ff6f61]' : ''
               }`
             }
           >
-            <img src={assets.people_icon} alt="Owner List" />
-            <p className='hidden md:block'>vehicle-Owner List</p>
+            <img  />
+            <p className='hidden md:block'>Vehicles List</p>
           </NavLink>
         </ul>
       ) : Otoken ? ( // Changed from otoken

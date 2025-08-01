@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { AdminContext } from '../../context/AdminContext';
 
 const VehicleList = () => {
-  const { vehicles, adminToken, getAllVehicles,changeAvailability } = useContext(AdminContext);
+  const { vehicles, adminToken, getAllVehicles, changeAvailability } = useContext(AdminContext);
 
   useEffect(() => {
     if (adminToken) {
@@ -11,57 +11,62 @@ const VehicleList = () => {
   }, [adminToken]);
 
   return (
-    <div className='m-5 max-h-[90vh] overflow-y-scroll'>
-      <h1 className='text-lg font-medium text-[#43B17E]'>All Vehicles</h1>
-      <div className='w-full flex flex-wrap gap-4 pt-5 gap-y-6'>
+    <div className="m-5 overflow-auto">
+      <h1 className="text-2xl font-semibold text-black mb-4">All Vehicles</h1>
+
+      <div className="flex flex-wrap gap-5">
         {vehicles.map((item, index) => (
           <div
-            className='border border-[#43B17E] rounded-xl max-w-56 overflow-hidden cursor-pointer group'
-            key={index}
-          >
+          key={index}
+          className="w-64 border border-gray-200 rounded-xl shadow group hover:shadow-lg transition duration-500 
+                     bg-white hover:bg-[#E53935] cursor-pointer"
+        >
+          <div className="overflow-hidden h-40">
             <img
-              className='bg-[#ecfdf5] group-hover:bg-[#43B17E] transition-all duration-500 w-full h-40 object-cover'
               src={item.image}
               alt={item.name}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className='p-4'>
-              <p className='text-neutral-800 text-lg font-medium'>{item.name}</p>
-              <p className='text-zinc-600 text-sm'>
-                {item.category} • ₹{item.pricePerDay}/day
-              </p>
-
-              {/* Ownership Info */}
-              <p className='text-sm mt-2'>
-                <span className='font-semibold'>Owned By: </span>
-                {item.isSystemOwned ? (
-                  <span className='text-[#43B17E]'>System-Owned</span>
-                ) : (
-                  <span className='text-orange-500'>Owner-Owned</span>
-                )}
-              </p>
-
-              {/* Availability */}
-              <div className='mt-2 flex items-center gap-1 text-sm'>
-                <input
-                  type="checkbox"
-                  checked={item.available}
-                  onChange={() => changeAvailability(item._id)}
-                  className="cursor-pointer transition-colors accent-green-500"
-                />
-                <p>Available</p>
-              </div>
-
-              {/* Edit Button */}
-              <div className='mt-3'>
-                <button
-                  className='px-3 py-1 bg-[#43B17E] text-white rounded hover:bg-[#379c67] transition-all text-sm w-full'
-                  // onClick={() => handleEdit(item._id)} // Add handler if needed
-                >
-                  Edit
-                </button>
-              </div>
-            </div>
           </div>
+        
+          <div className="p-4 transition-all duration-500 
+                          text-black group-hover:text-white">
+            <h2 className="text-lg font-semibold">{item.name}</h2>
+            <p className="text-gray-700 text-sm group-hover:text-gray-300">
+              {item.category} • ₹{item.pricePerDay}/day
+            </p>
+        
+            {/* Ownership Info */}
+            <p className="text-sm mt-2">
+              <span className="font-medium">Owned By: </span>
+              {item.isSystemOwned ? (
+                <span className="text-[#ffb3a9] font-medium">System</span>
+              ) : (
+                <span className="text-[#ffb3a9] font-medium">Owner</span>
+              )}
+            </p>
+        
+            {/* Availability */}
+            <div className="mt-2 flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={item.available}
+                onChange={() => changeAvailability(item._id)}
+                className="accent-white cursor-pointer"
+              />
+              <span className="group-hover:text-gray-300">Available</span>
+            </div>
+        
+            {/* Edit Button */}
+            <button
+              className="mt-4 w-full py-1.5 rounded bg-white text-[#E53935] font-semibold text-sm 
+                         hover:bg-gray-100 transition group-hover:bg-white group-hover:text-[#E53935]"
+            >
+              Edit
+            </button>
+          </div>
+        </div>
+        
         ))}
       </div>
     </div>

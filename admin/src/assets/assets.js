@@ -2,19 +2,24 @@
 // import about_image from './about_image.png'
 // import arrow_icon from './arrow_icon.svg'
 // import chats_icon from './chats_icon.svg'
+import add_icon from './add_icon.svg'
+import booking_icon from './appointment_icon.svg'
 import contact_image from './contact_image.png'
 import cross_icon from './cross_icon.png'
 import dropdown_icon from './dropdown_icon.svg'
 import group_profiles from './group_profiles.png'
 import header_img from './header_img.png'
+import home_icon from './home_icon.svg'
 import info_icon from './info_icon.svg'
 import logo from './logo.png'
 import menu_icon from './menu_icon.svg'
+import users_icon from './people_icon.svg'
 import profile_pic from './profile_pic.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
 import upload_icon from './upload_icon.png'
 import verified_icon from './verified_icon.svg'
+
 
 /////////////////////////////////////
 import veh9 from './HondaActiva.png'
@@ -59,15 +64,19 @@ import woman from './woman.png'
 
 
 
+
 export const assets = {
     // appointment_img,
     header_img,
     group_profiles,
     logo,
+    add_icon,
+    booking_icon,
     // chats_icon,
     verified_icon,
     info_icon,
     profile_pic,
+    users_icon,
     // arrow_icon,
     contact_image,
     // about_image,
@@ -75,10 +84,13 @@ export const assets = {
     cross_icon,
     dropdown_icon,
     upload_icon,
+    home_icon,
+    users_icon,
     stripe_logo,
     razorpay_logo,
     ////////////////////
     car_top,
+    car1,
     img1,
     img2,
     img3,

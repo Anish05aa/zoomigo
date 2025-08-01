@@ -3,22 +3,53 @@ import { assets } from '../assets/assets';
 
 const Contact = () => {
   return (
-    <div className='text-center text-2xl pt-10 text-gray-500'>
+    <div className='text-center pt-10 md:mx-10'>
+      {/* Heading */}
       <div>
-        <p>CONTACT <span className='text-gray-700 font-semibold'>US</span></p>
+        <p className='text-3xl font-semibold text-heading-dark'>
+          CONTACT <span className='text-[#ff6f61]'>US</span>
+        </p>
+        <p className='mt-2 text-sm text-desc-dark'>We’re here to help — reach out to Zoomigo anytime.</p>
       </div>
 
+      {/* Contact Info Section */}
       <div className='my-10 flex flex-col justify-center md:flex-row gap-10 mb-28 text-sm'>
-        <img className='w-full md:max-w-[360px]' src={assets.contact_image} alt="" />
-        <div className='flex flex-col justify-center items-start gap-6'>
-          <p className='font-semibold text-lg text-gray-600'>OUR OFFICE</p>
-          <p className='text-gray-500 text-start'>1234 AutoDrive Street<br />Suite 200, San Francisco, CA</p>
-          <p className='text-gray-500 text-start'>Tel: (415) 987‑6543<br />Email: support@driveease.com</p>
-          <p className='font-semibold text-lg text-gray-600'>Careers at DRIVEEASE</p>
-          <p className='text-gray-500'>Join our growing team and help shape the future of car rentals.</p>
-          <button className='border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500'>
-            Explore Jobs
-          </button>
+        {/* Contact Image */}
+        <img
+          className='w-full md:max-w-[360px] rounded-xl shadow-md'
+          src={assets.contact_image}
+          alt="Contact Zoomigo"
+        />
+
+        {/* Office Info */}
+        <div className='flex flex-col justify-center items-start gap-6 text-left'>
+          {/* Office Address */}
+          <div>
+            <p className='font-semibold text-lg text-heading-dark'>OUR OFFICE</p>
+            <p className='text-desc-dark leading-6 mt-1'>
+              1234 AutoDrive Street<br />
+              Suite 200, San Francisco, CA
+            </p>
+          </div>
+
+          {/* Contact Details */}
+          <div>
+            <p className='text-desc-dark leading-6'>
+              Tel: (415) 987‑6543<br />
+              Email: support@zoomigo.com
+            </p>
+          </div>
+
+          {/* Careers */}
+          <div>
+            <p className='font-semibold text-lg text-heading-dark mt-4'>Careers at ZOOMIGO</p>
+            <p className='text-desc-dark mt-1'>
+              Join our growing team and help shape the future of car rentals with Zoomigo.
+            </p>
+            <button className='mt-4 px-6 py-2 rounded bg-[#ff6f61] text-white hover:opacity-90 transition-all duration-300'>
+              Explore Jobs
+            </button>
+          </div>
         </div>
       </div>
     </div>

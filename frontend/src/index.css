@@ -29,3 +29,60 @@ html {
 #bp-web-widget, .bp-widget-side {
     display: none !important;
   }
+
+  
+/* index.css */
+
+.text-heading-light {
+    @apply text-white;
+  }
+  .text-heading-dark {
+    @apply text-black;
+  }
+  .text-desc-light {
+    @apply text-gray-300;
+  }
+  .text-desc-dark {
+    @apply text-gray-700;
+  }
+  
+  .bg-primary-red {
+    @apply bg-[#E53935];
+  }
+  .bg-dark-section {
+    @apply bg-[#121212];
+  }
+  .bg-dropdown {
+    @apply bg-[#1e1e1e];
+  }
+  .hover-link-light {
+    @apply hover:text-white/80 transition;
+  }
+
+  .hover-link-light {
+    @apply text-gray-300 hover:text-white transition-all;
+  }
+  .bg-dropdown {
+    @apply bg-[#1a1a1a];
+  }
+  .bg-dark-section {
+    @apply bg-[#0f0f0f];
+  }
+  
+  /* .bg-hero-gradient {
+    @apply bg-gradient-to-r from-[#E53935] to-[#ff6f61];
+  } */
+  
+  /* toastStyles.css or inside index.css */
+  .toast-custom {
+    background-color: #E53935 !important;
+    color: #fff !important;
+    font-family: 'Inter', sans-serif;
+    border-radius: 12px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .Toastify__progress-bar {
+    background-color: #E53935 !important;
+  }
+  

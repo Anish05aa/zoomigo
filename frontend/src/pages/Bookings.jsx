@@ -5,12 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { assets } from '../assets/assets';
-import RelatedVehicles from '../components/RelatedVehicles'; // ✅ Uncommented
+import RelatedVehicles from '../components/RelatedVehicles';
 import { AppContext } from '../context/AppContext';
 
 const Bookings = () => {
-  const { carId: vehicleId } = useParams(); // ✅ Alias carId to vehicleId
-
+  const { carId: vehicleId } = useParams();
   const {
     vehicles,
     currencySymbol,
@@ -49,18 +48,18 @@ const Bookings = () => {
         setBookedDates(data.bookedDates.map((d) => new Date(d)));
       }
     } catch (error) {
-      console.error("Error fetching available dates:", error);
+      toast.error("Unable to process booking. Please try again.");
     }
   };
 
   const bookVehicle = async () => {
     if (!token) {
-      toast.warn("Login to book a vehicle");
+      toast.warn("Please log in to book your ride.");
       return navigate("/login");
     }
 
     if (!pickupDate || !dropoffDate) {
-      return toast.warn("Select both pickup and dropoff dates");
+      return toast.warn("Both pickup and dropoff dates are required.");
     }
 
     try {
@@ -79,22 +78,19 @@ const Bookings = () => {
       );
 
       if (data.success) {
-        toast.success(data.message);
+        toast.success("Your booking was successful!");
         getVehiclesData();
         navigate("/my-bookings");
       } else {
-        toast.error(data.message);
+        toast.error(data.message || "Booking couldn't be completed.");
       }
     } catch (error) {
-      console.error("Booking error:", error);
-      toast.error(error.response?.data?.message || error.message);
+      toast.error("Unable to process booking. Please try again.");
     }
   };
 
   useEffect(() => {
-    if (vehicleInfo) {
-      fetchAvailableDates();
-    }
+    if (vehicleInfo) fetchAvailableDates();
   }, [vehicleInfo]);
 
   useEffect(() => {
@@ -103,87 +99,49 @@ const Bookings = () => {
 
   return vehicleInfo && (
     <div>
-      {/* Vehicle details */}
+      {/* Vehicle Info */}
       <div className='flex flex-col sm:flex-row gap-4'>
         <div>
           <img
-            className='bg-green-100 w-full sm:max-w-72 rounded-lg'
+            className='bg-gray-100 w-full sm:max-w-72 rounded-lg'
             src={vehicleInfo.image}
-            alt=''
+            alt={vehicleInfo.name}
           />
         </div>
 
-        <div className='flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0'>
-          <p className='flex items-center gap-2 text-2xl font-medium text-gray-900'>
+        <div className='flex-1 border border-gray-300 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0'>
+          <p className='flex items-center gap-2 text-2xl font-semibold text-black'>
             {vehicleInfo.name}
-            <img className='w-5' src={assets.verified_icon} alt='' />
+            <img className='w-5' src={assets.verified_icon} alt='Verified' />
           </p>
-          <div className='flex items-center gap-2 text-sm mt-1 text-gray-600'>
+          <div className='flex items-center gap-2 text-sm mt-1 text-gray-700'>
             <p>{vehicleInfo.model} - {vehicleInfo.category}</p>
-            <button className='py-0.5 px-2 border text-xs rounded-full'>
+            <button className='py-0.5 px-2 border text-xs rounded-full text-black'>
               {vehicleInfo.type}
             </button>
           </div>
 
-          <div>
-            <p className='flex items-center gap-1 text-sm font-medium text-gray-900'>
-              About <img src={assets.info_icon} alt='' />
+          <div className='mt-4'>
+            <p className='flex items-center gap-1 text-sm font-medium text-black'>
+              About <img src={assets.info_icon} alt='Info' />
             </p>
-            <p className='text-sm text-gray-500 max-w-[700px] mt-1'>
+            <p className='text-sm text-gray-700 mt-1'>
               {vehicleInfo.description}
             </p>
           </div>
 
-          <p className='text-gray-500 font-medium mt-4'>
-            Booking fee:{' '}
-            <span className='text-lg font-extrabold text-gray-600'>
+          <p className='text-gray-700 font-medium mt-4'>
+            Booking Fee:{' '}
+            <span className='text-lg font-bold text-black'>
               {currencySymbol}{vehicleInfo.pricePerDay}
             </span>
           </p>
         </div>
       </div>
 
-      {/* Show Available Dates */}
-      <div className="mt-6">
-        <p className="text-gray-700 font-medium">Available Dates:</p>
-        <div className="flex flex-wrap gap-2 mt-2">
-          {availableDates.length > 0 ? (
-            availableDates.map((date, index) => (
-              <p
-                key={index}
-                className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full"
-              >
-                {date}
-              </p>
-            ))
-          ) : (
-            <p className="text-sm text-gray-500">No available dates yet.</p>
-          )}
-        </div>
-      </div>
-
-      {/* Show Booked Dates */}
-      <div className="mt-4">
-        <p className="text-gray-700 font-medium">Booked Dates:</p>
-        <div className="flex flex-wrap gap-2 mt-2">
-          {bookedDates.length > 0 ? (
-            bookedDates.map((date, index) => (
-              <p
-                key={index}
-                className="text-sm bg-red-100 text-red-700 px-3 py-1 rounded-full"
-              >
-                {formatDisplayDate(date)}
-              </p>
-            ))
-          ) : (
-            <p className="text-sm text-gray-500">No dates are booked yet.</p>
-          )}
-        </div>
-      </div>
-
-      {/* Booking slots */}
-      <div className='sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700'>
-        <p>Select Booking Duration</p>
+      {/* Booking Form (moved up) */}
+      <div className='sm:ml-72 sm:pl-4 mt-6 font-medium text-black'>
+        <p className="mb-2">Select Booking Duration</p>
 
         <div className='flex flex-col'>
           <label className='text-sm mb-1'>Pickup Date</label>
@@ -198,7 +156,7 @@ const Bookings = () => {
           />
         </div>
 
-        <div className='flex flex-col'>
+        <div className='flex flex-col mt-3'>
           <label className='text-sm mb-1'>Dropoff Date</label>
           <DatePicker
             selected={dropoffDate}
@@ -213,10 +171,29 @@ const Bookings = () => {
 
         <button
           onClick={bookVehicle}
-          className='bg-[#43B17E] text-white text-sm font-light px-14 py-3 rounded-full my-6'
+          className='bg-[#E53935] hover:bg-[#ff6f61] transition-all duration-200 text-white text-sm font-medium px-14 py-3 rounded-full mt-6'
         >
           Book Vehicle
         </button>
+      </div>
+
+      {/* Available Dates */}
+      <div className="mt-10 px-4 sm:px-0">
+        <p className="text-black font-semibold">Available Dates:</p>
+        <div className="flex flex-wrap gap-2 mt-2">
+          {availableDates.length > 0 ? (
+            availableDates.map((date, index) => (
+              <p
+                key={index}
+                className="text-sm bg-[#FFE5E3] text-[#E53935] px-3 py-1 rounded-full"
+              >
+                {date}
+              </p>
+            ))
+          ) : (
+            <p className="text-sm text-gray-700">Currently no available dates.</p>
+          )}
+        </div>
       </div>
 
       {/* Related Vehicles */}

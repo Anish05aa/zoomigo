@@ -20,26 +20,28 @@ const AllBookings = () => {
     }
   }, [bookings]);
 
-  if (loading) return <div className="p-5 text-center">Loading bookings...</div>;
-  if (bookings.length === 0) return <div className="p-5 text-center">No bookings found</div>;
+  if (loading) return <div className="p-5 text-center text-gray-700">Loading bookings...</div>;
+  if (bookings.length === 0) return <div className="p-5 text-center text-gray-700">No bookings found</div>;
 
   return (
     <div className='w-full max-w-6xl m-5'>
-      <p className='mb-3 text-lg font-medium'>All Bookings</p>
+      <p className='mb-3 text-lg font-semibold text-black'>All Bookings</p>
 
       <div className='bg-white border rounded text-sm max-h-[80vh] min-h-[60vh] overflow-y-scroll'>
+        {/* Table Head */}
         <div className='
-          grid-flow-col py-3 px-6 border-b justify-between max-sm:gap-2 
-          sm:grid grid-cols-[0.5fr_3fr_3fr_1.75fr_1.75fr_1fr_1fr] items-center'>
-          <p>#</p>
-          <p>User</p>
-          <p>Vehicle</p>
-          <p>Pickup Date</p>
-          <p>Dropoff Date</p>
-          <p>Amount</p>
-          <p>Action</p>
+          py-3 px-6 border-b justify-between max-sm:gap-2 
+          sm:grid grid-cols-[0.5fr_3fr_3fr_1.75fr_1.75fr_1fr_1fr] items-center bg-gray-100'>
+          <p className='text-black font-medium'>#</p>
+          <p className='text-black font-medium'>User</p>
+          <p className='text-black font-medium'>Vehicle</p>
+          <p className='text-black font-medium'>Pickup Date</p>
+          <p className='text-black font-medium'>Dropoff Date</p>
+          <p className='text-black font-medium'>Amount</p>
+          <p className='text-black font-medium'>Action</p>
         </div>
 
+        {/* Table Rows */}
         {bookings.map((item, index) => {
           const userImage = item.userData?.image || assets.default_user;
           const userName = item.userData?.name || 'Unknown User';
@@ -51,7 +53,7 @@ const AllBookings = () => {
           return (
             <div
               key={index}
-              className='flex flex-wrap justify-between max-sm:gap-2 sm:grid grid-cols-[0.5fr_3fr_3fr_1.75fr_1.75fr_1fr_1fr] items-center text-gray-500 py-3 px-6 border-b hover:bg-gray-50'
+              className='flex flex-wrap justify-between max-sm:gap-2 sm:grid grid-cols-[0.5fr_3fr_3fr_1.75fr_1.75fr_1fr_1fr] items-center text-gray-700 py-3 px-6 border-b hover:bg-gray-50'
             >
               <p className='max-sm:hidden'>{index + 1}</p>
 
@@ -69,11 +71,10 @@ const AllBookings = () => {
               <p>{new Date(item.dropoffDate).toLocaleDateString()}</p>
               <p>{currency}{item.amount}</p>
 
-              {/* Action Column */}
               {item.isCancelled ? (
-                <p className='text-red-400 font-medium'>Cancelled</p>
+                <p className='text-[#E53935] font-medium'>Cancelled</p>
               ) : item.isCompleted ? (
-                <p className='text-green-500 font-medium'>Completed</p>
+                <p className='text-green-600 font-medium'>Completed</p>
               ) : (
                 <img
                   onClick={() => cancelBooking(item._id)}

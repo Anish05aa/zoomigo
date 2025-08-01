@@ -12,6 +12,8 @@ const slotDateFormat = (slotDate) => {
   const dateArray = slotDate.split('_')
   return dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2]
 }
+const currency="$"
+
 
 
 
@@ -19,7 +21,8 @@ const AppContextProvider = (props) => {
 
     const value = {
         // Define your context values here
-        slotDateFormat
+        slotDateFormat,
+        currency
     };
 
   return (

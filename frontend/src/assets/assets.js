@@ -89,6 +89,13 @@ export const assets = {
     img8,
     img9,
     img10,
+    veh1,
+    veh7,
+    veh13,
+    veh14,
+    veh11,
+    veh2,
+
     pointing_man,
     // homepage_video,
     woman

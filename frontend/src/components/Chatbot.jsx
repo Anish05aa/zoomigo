@@ -6,7 +6,7 @@ const ChatWidget = () => {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://cdn.botpress.cloud/webchat/v1/inject.js';
+    script.src = 'https://cdn.botpress.cloud/webchat/v3.1/inject.js';
     script.async = true;
     document.body.appendChild(script);
 
@@ -14,7 +14,7 @@ const ChatWidget = () => {
       window.botpressWebChat.init({
         composerPlaceholder: 'Ask me anything...',
         botId: 'e846b244-6d3e-4845-97e2-8bb05b062447',
-        hostUrl: 'https://cdn.botpress.cloud/webchat/v1',
+        hostUrl: 'https://cdn.botpress.cloud/webchat/v3.1',
         messagingUrl: 'https://messaging.botpress.cloud',
         clientId: 'e846b244-6d3e-4845-97e2-8bb05b062447',
         showPoweredBy: false,
@@ -22,7 +22,7 @@ const ChatWidget = () => {
         containerWidth: '350px',
         layoutWidth: '100%',
         lazySocket: true,
-        hideWidget: true, // Try to hide default bubble
+        // hideWidget: true, // Try to hide default bubble
       });
 
       // 🚫 Force hide default button immediately after init

@@ -16,61 +16,33 @@ const AdminDashboard = () => {
       {/* Dashboard Stats */}
       <div className='flex flex-wrap gap-3'>
 
-        <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border cursor-pointer hover:scale-105 transition-all'>
-          <img className='w-14' src={assets.car_icon} alt="" />
-          <div>
-            <p className='text-xl font-semibold text-gray-600'>{dashData.vehicles}</p>
-            <p className='text-gray-400'>Total Vehicles</p>
+        {[
+          { icon: assets.car1, value: dashData.vehicles, label: 'Total Vehicles' },
+          { icon: assets.booking_icon, value: dashData.bookings, label: 'Total Bookings' },
+          { icon: assets.users_icon, value: dashData.users, label: 'Total Users' },
+          {  value: dashData.ownersCount, label: 'Owners' },
+          {  value: dashData.systemOwnedCount, label: 'System-Owned' },
+          {  value: dashData.ownerOwnedCount, label: 'Owner-Owned' }
+        ].map((stat, idx) => (
+          <div
+            key={idx}
+            className='flex items-center gap-2 bg-white text-black p-4 min-w-52 rounded border cursor-pointer hover:scale-105 transition-all'
+          >
+            <img className='w-14' src={stat.icon}  />
+            <div>
+              <p className='text-xl font-semibold text-black'>{stat.value}</p>
+              <p className='text-gray-700'>{stat.label}</p>
+            </div>
           </div>
-        </div>
-
-        <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border cursor-pointer hover:scale-105 transition-all'>
-          <img className='w-14' src={assets.booking_icon} alt="" />
-          <div>
-            <p className='text-xl font-semibold text-gray-600'>{dashData.bookings}</p>
-            <p className='text-gray-400'>Total Bookings</p>
-          </div>
-        </div>
-
-        <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border cursor-pointer hover:scale-105 transition-all'>
-          <img className='w-14' src={assets.user_icon} alt="" />
-          <div>
-            <p className='text-xl font-semibold text-gray-600'>{dashData.users}</p>
-            <p className='text-gray-400'>Total Users</p>
-          </div>
-        </div>
-
-        <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border cursor-pointer hover:scale-105 transition-all'>
-          <img className='w-14' src={assets.owner_icon} alt="" />
-          <div>
-            <p className='text-xl font-semibold text-gray-600'>{dashData.ownersCount}</p>
-            <p className='text-gray-400'>Owners</p>
-          </div>
-        </div>
-
-        <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border cursor-pointer hover:scale-105 transition-all'>
-          <img className='w-14' src={assets.system_owned_icon} alt="" />
-          <div>
-            <p className='text-xl font-semibold text-gray-600'>{dashData.systemOwnedCount}</p>
-            <p className='text-gray-400'>System-Owned</p>
-          </div>
-        </div>
-
-        <div className='flex items-center gap-2 bg-white p-4 min-w-52 rounded border cursor-pointer hover:scale-105 transition-all'>
-          <img className='w-14' src={assets.owner_owned_icon} alt="" />
-          <div>
-            <p className='text-xl font-semibold text-gray-600'>{dashData.ownerOwnedCount}</p>
-            <p className='text-gray-400'>Owner-Owned</p>
-          </div>
-        </div>
+        ))}
 
       </div>
-
 
       {/* Latest Bookings Table Head */}
       <div className='
         grid-flow-col py-3 px-6 border-b justify-between max-sm:gap-2 
-        sm:grid grid-cols-[0.5fr_3fr_3fr_1.75fr_1.75fr_1fr_1fr] items-center bg-gray-50'>
+        sm:grid grid-cols-[0.5fr_3fr_3fr_1.75fr_1.75fr_1fr_1fr] items-center bg-gray-50 text-black font-medium'
+      >
         <p>#</p>
         <p>User</p>
         <p>Vehicle</p>
@@ -94,7 +66,7 @@ const AdminDashboard = () => {
             return (
               <div
                 key={index}
-                className='flex flex-wrap justify-between max-sm:gap-2 sm:grid grid-cols-[0.5fr_3fr_3fr_1.75fr_1.75fr_1fr_1fr] items-center text-gray-500 py-3 px-6 border-b hover:bg-gray-50'
+                className='flex flex-wrap justify-between max-sm:gap-2 sm:grid grid-cols-[0.5fr_3fr_3fr_1.75fr_1.75fr_1fr_1fr] items-center text-gray-700 py-3 px-6 border-b hover:bg-gray-50'
               >
                 <p className='max-sm:hidden'>{index + 1}</p>
 
@@ -129,13 +101,11 @@ const AdminDashboard = () => {
             );
           })
         ) : (
-          <p className="text-gray-400 px-6 py-4">No recent bookings available.</p>
+          <p className="text-gray-700 px-6 py-4 italic">No bookings to display right now. Stay tuned!</p>
         )}
       </div>
     </div>
   );
 };
 
-
-
-      export default AdminDashboard;
+export default AdminDashboard;

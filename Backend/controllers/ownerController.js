@@ -79,7 +79,9 @@ export const getOwnerDashboard = async (req, res) => {
     console.log(`Found ${bookings.length} bookings`);
 
     // 2. Calculate statistics
-    const totalEarnings = bookings.reduce((sum, booking) => sum + (booking.amount || 0), 0);
+    const totalEarnings = bookings.reduce((sum, booking) => {
+      return booking.isCancelled ? sum : sum + (booking.amount || 0);
+    }, 0);
     const activeBookings = bookings.filter(b => !b.isCancelled && !b.isCompleted).length;
     const cancelledBookings = bookings.filter(b => b.isCancelled).length;
 

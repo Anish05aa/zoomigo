@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { AppContext } from '../context/AppContext'
 
-
 const Login = () => {
   const { backendUrl, token, setToken } = useContext(AppContext)
   const navigate = useNavigate()
@@ -16,8 +15,6 @@ const Login = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault()
-
-    // --- Uncomment when backend is ready ---
 
     try {
       if (state === 'Sign Up') {
@@ -40,18 +37,15 @@ const Login = () => {
         if (data.success) {
           localStorage.setItem('token', data.token)
           setToken(data.token)
+          toast.success('🚗 Welcome to Zoomigo! Login successful')
         } else {
           toast.error(data.message)
         }
       }
     } catch (error) {
-      toast.error(error.message)
+      toast.error("Something went wrong. Please try again later.")
     }
-
-    console.log('Form submitted:', { state, name, email, password })
   }
-
-  // --- Uncomment this block after backend auth is working ---
 
   useEffect(() => {
     if (token) {
@@ -59,18 +53,19 @@ const Login = () => {
     }
   }, [token])
 
-
   return (
     <form onSubmit={onSubmitHandler} className='min-h-[80vh] flex items-center'>
-      <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border-none rounded-xl text-zinc-600 text-sm shadow-lg'>
+      <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border-none rounded-xl text-black text-sm shadow-lg bg-white'>
         <p className='text-2xl font-semibold'>
           {state === 'Sign Up' ? 'Create Account' : 'Login'}
         </p>
-        <p>Please {state === 'Sign Up' ? 'sign up' : 'log in'} to book a vehicle</p>
+        <p className='text-gray-700'>
+          Please {state === 'Sign Up' ? 'sign up' : 'log in'} to book a vehicle
+        </p>
 
         {state === 'Sign Up' && (
           <div className='w-full'>
-            <p>Full Name</p>
+            <p className='text-gray-700'>Full Name</p>
             <input
               type='text'
               className='border border-zinc-300 rounded w-full p-2 mt-1'
@@ -82,7 +77,7 @@ const Login = () => {
         )}
 
         <div className='w-full'>
-          <p>Email</p>
+          <p className='text-gray-700'>Email</p>
           <input
             type='email'
             className='border border-zinc-300 rounded w-full p-2 mt-1'
@@ -93,7 +88,7 @@ const Login = () => {
         </div>
 
         <div className='w-full'>
-          <p>Password</p>
+          <p className='text-gray-700'>Password</p>
           <input
             type='password'
             className='border border-zinc-300 rounded w-full p-2 mt-1'
@@ -105,27 +100,27 @@ const Login = () => {
 
         <button
           type='submit'
-          className='bg-[#43B17E] text-white w-full py-2 rounded-md text-base'
+          className='bg-[#ff6f61] text-white w-full py-2 rounded-md text-base hover:opacity-90 transition'
         >
           {state === 'Sign Up' ? 'Create Account' : 'Login'}
         </button>
 
         {state === 'Sign Up' ? (
-          <p>
-            Already have an Account?{' '}
+          <p className='text-gray-700'>
+            Already have an account?{' '}
             <span
               onClick={() => setState('Login')}
-              className='text-[#43B17E] underline cursor-pointer'
+              className='text-[#ff6f61] underline cursor-pointer'
             >
               Login here
             </span>
           </p>
         ) : (
-          <p>
-            Create a new Account?{' '}
+          <p className='text-gray-700'>
+            Create a new account?{' '}
             <span
               onClick={() => setState('Sign Up')}
-              className='text-[#43B17E] underline cursor-pointer'
+              className='text-[#ff6f61] underline cursor-pointer'
             >
               Click here
             </span>
