@@ -9,7 +9,7 @@ const AdminContextProvider = ({ children }) => {
     const [dashData, setdashData] = useState({});
 
     const [vehicles, setVehicles] = useState([]);
-    const [backendUrl] = useState(import.meta.env.VITE_BACKEND_URL);
+    const [backendUrl] = useState('https://zoomigo-backend-snfx.onrender.com');
     const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
