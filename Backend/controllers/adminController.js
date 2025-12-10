@@ -2,7 +2,7 @@ import { v2 as cloudinary } from "cloudinary";
 import jwt from "jsonwebtoken";
 import connectCloudinary from "../config/cloudinary.js";
 import bookingModel from "../models/bookingmodel.js";
-import ownerModel from "../models/ownerModel.js";
+import ownerModel from "../models/ownermodel.js";
 import userModel from "../models/usermodel.js";
 import Vehicle from "../models/vehiclemodel.js";
 
