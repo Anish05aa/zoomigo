@@ -11,7 +11,7 @@ const OwnerContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+  const backendUrl = 'https://zoomigo-backend-snfx.onrender.com' || 'http://localhost:5000';
 
   const getOwnerDashboard = useCallback(async () => {
     setLoading(true);
